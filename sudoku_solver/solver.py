@@ -34,21 +34,14 @@ def findEmpty(board):
 #check if the input is valid
 def check(board, number, position):
     #check row
-    #goes through the row and check for number
-    #if the row contains the number that's not in the empty space position, return false
     for i in range(len(board[0])):
         if board[position[0]][i] == number and position[1] != i:
             return False
     #check column
-    #goes through the column and check for number
-    #if the column contains the number that's not in the empty space position, return false
     for i in range(len(board)):
         if board[i][position[1]] == number and position[0] != i:
             return False
     #check the whole box
-    #goes through the box, if you find the number, then you check if the position
-    #is the same as the empty box position
-    #return false if it's not, else return true
     box_row = position[1]//3
     box_column = position[0]//3
     for y in range(box_column*3, box_column*3 + 3):
@@ -75,7 +68,6 @@ def solution(board):
 
             board[row][column] = 0
     return False
-
 
 printBoard(board)
 solution(board)
