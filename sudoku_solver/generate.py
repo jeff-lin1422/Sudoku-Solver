@@ -1,5 +1,16 @@
 import random
-import generate
+board = [
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+]
+selection = [1,2,3,4,5,6,7,8,9]
 defaultBoard = [
     [0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0],
@@ -11,10 +22,26 @@ defaultBoard = [
     [0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0],
 ]
+#17 numbers to solve sudoku
 
-board = generate.createBoard(defaultBoard)
-    
-#prints the board by traversing through matrix
+def fullSudoku(board):
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if board[i][j] == 0:
+                return False
+    return True
+
+def createBoard(board):
+    numUsed = 0
+    while numUsed < 17:
+        number = random.choice(selection)
+        x = random.randrange(0,9)
+        y = random.randrange(0,9)
+        if check(board, number, (x,y)):
+            board[x][y] = number
+            numUsed += 1
+    printBoard(board)
+    return board
 def printBoard(board):
     for i in range(len(board)):
         if i % 3 == 0 and i != 0:
@@ -73,11 +100,4 @@ def solution(board):
             board[row][column] = 0
     return False
 
-def main(board):
-    printBoard(board)
-    value = input("\n If you would like to see the answer, press 1\n")
-    if value == "1":
-        print("\n\n\n\n")
-        solution(board)
-        printBoard(board)
-main(board)
+createBoard(board)
