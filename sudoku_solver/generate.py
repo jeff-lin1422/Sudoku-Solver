@@ -11,17 +11,7 @@ board = [
     [0,0,0,0,0,0,0,0,0],
 ]
 selection = [1,2,3,4,5,6,7,8,9]
-defaultBoard = [
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-]
+
 #17 numbers to solve sudoku
 
 def fullSudoku(board):
@@ -31,16 +21,15 @@ def fullSudoku(board):
                 return False
     return True
 
-def createBoard(board):
+def createBoard(board, amountOfNumbers):
     numUsed = 0
-    while numUsed < 17:
+    while numUsed < amountOfNumbers:
         number = random.choice(selection)
         x = random.randrange(0,9)
         y = random.randrange(0,9)
         if check(board, number, (x,y)):
             board[x][y] = number
             numUsed += 1
-    printBoard(board)
     return board
 def printBoard(board):
     for i in range(len(board)):
@@ -99,5 +88,3 @@ def solution(board):
 
             board[row][column] = 0
     return False
-
-createBoard(board)
