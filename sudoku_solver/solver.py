@@ -12,7 +12,7 @@ defaultBoard = [
     [0,0,0,0,0,0,0,0,0],
 ]
 
-board = generate.createBoard(defaultBoard, 17)
+board = generate.checkBoard(defaultBoard)
     
 #prints the board by traversing through matrix
 def printBoard(board):

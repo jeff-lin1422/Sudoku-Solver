@@ -1,4 +1,5 @@
 import random
+import copy
 board = [
     [0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0],
@@ -13,13 +14,24 @@ board = [
 selection = [1,2,3,4,5,6,7,8,9]
 
 #17 numbers to solve sudoku
-
-def fullSudoku(board):
-    for i in range(len(board)):
-        for j in range(len(board[0])):
-            if board[i][j] == 0:
-                return False
-    return True
+def checkBoard(board):
+    board = createBoard(board, 17)
+    testBoard = copy.deepcopy(board)
+    while not solution(testBoard):
+        board = [
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+        ]
+        board = createBoard(board, 17)
+        testBoard = copy.deepcopy(board)
+    return board
 
 def createBoard(board, amountOfNumbers):
     numUsed = 0
@@ -88,3 +100,4 @@ def solution(board):
 
             board[row][column] = 0
     return False
+
