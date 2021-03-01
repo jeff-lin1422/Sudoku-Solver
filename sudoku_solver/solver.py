@@ -75,9 +75,8 @@ def solution(board):
 
 def main(board):
     printBoard(board)
-    value = input("\n If you would like to see the answer, press 1\n")
-    if value == "1":
+    value = input("\n If you would like to see the answer, press b\n")
+    if value == "b":
         print("\n\n\n\n")
         solution(board)
         printBoard(board)
-main(board)
